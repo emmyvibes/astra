@@ -1,4 +1,2 @@
-github.com/go-kivik/kivik/v4 v4.0.1-rc3 h1:STFTbQYfhGdlLJjuJgluKTj+XgCRDUzS/2uX5mS4k+g=
-github.com/go-kivik/kivik/v4 v4.0.1-rc3/go.mod h1:nXC30G9nbFhYaKC9dE0J5+u05twr+yDAQXF6ZeWVyvk=
-golang.org/x/sync v0.4.0 h1:zxkM55ReGkDlKSM+Fu41A+zmbZuaPVbGMzvvdUPznYQ=
-golang.org/x/sync v0.4.0/go.mod h1:FU7BRWz2tNW+3quACPkgCx/L+uEAv1htQ0V83Z9Rj+Y=
+github.com/fjl/go-couchdb v0.1.0 h1:CIgcwg8wTWkLbgYrI/dy0il5syWjHDyLy2M6l77TawQ=
+github.com/fjl/go-couchdb v0.1.0/go.mod h1:oF+ECplezwWah+9cfVsXP39+EY/lDYlbISi3eFrRIhs=

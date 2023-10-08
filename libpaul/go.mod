@@ -2,7 +2,7 @@ module github.com/emmyvibes/paul/libpaul
 
 go 1.20
 
-require (
-	github.com/go-kivik/kivik/v4 v4.0.1-rc3 // indirect
-	golang.org/x/sync v0.4.0 // indirect
-)
+require github.com/fjl/go-couchdb v0.1.0
+
+//replace dario.cat/mergo => github.com/imdario/mergo latest
+replace github.com/imdario/mergo => dario.cat/mergo v1.0.0
