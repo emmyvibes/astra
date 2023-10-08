@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	backend "github.com/emmyvibes/paul/backend/pubs"
 	"github.com/gorilla/mux"
@@ -40,8 +41,6 @@ func main() {
 	r.HandleFunc("/getPairCode", getPairCodeHandler).Methods("GET")
 	r.HandleFunc("/usePairCode", usePairCodeHandler).Methods("GET")
 
-	test := backend.GetAllEntries()
-	fmt.Println(test)
 	//establish server on localhost port 8080
 	port := "8080"
 	fmt.Printf("Starting server on :%s...\n", port)
@@ -61,14 +60,14 @@ func main() {
 func getAllEntriesHandler(w http.ResponseWriter, r *http.Request) {
 
 	//Database is fetched from the request query parameters
-	db := r.URL.Query().Get("dbName")
+	dsn := r.URL.Query().Get("dsn")
 
-	if db == "" {
-		//error handler here
+	if dsn == "" {
+		panic("No dsn present in query, db lookup failed")
 	}
 
-	response := backend.GetAllEntries()
-	fmt.Println(response)
+	response := backend.GetAllEntries(dsn)
+	responseJSON(w, http.StatusOK, response)
 
 	// byteString := []byte("abcdefg")
 	// sampleRow := &Row{sampleHash, 1, byteString}
@@ -125,19 +124,19 @@ func saveEntryHandler(w http.ResponseWriter, r *http.Request) {
 **/
 func deleteEntryHandler(w http.ResponseWriter, r *http.Request) {
 	hash := r.URL.Query().Get("hash")
-	db := r.URL.Query().Get("db")
+	dsn := r.URL.Query().Get("dsn")
 
-	if db == "" || hash == "" {
+	if dsn == "" || hash == "" {
 		//error handler here
 	}
 
-	response := backend.DeleteEntry()
+	response := backend.DeleteEntry(dsn, hash)
 	fmt.Println(response)
 
 	// x := fmt.Sprintf("Connected to %s, deleted file %s", db, sampleHash)
 
-	// message := Message{Content: x}
-	// responseJSON(w, http.StatusOK, message)
+	message := Message{Content: response}
+	responseJSON(w, http.StatusOK, message)
 }
 
 /**
@@ -153,12 +152,15 @@ func createEntryHandler(w http.ResponseWriter, r *http.Request) {
 
 	dsn := r.URL.Query().Get("dsn")
 	hash := r.URL.Query().Get("hash")
-
+	fi, err := os.ReadFile("LOGOMARK_ORANGE300.png")
+	if err != nil {
+		panic(err)
+	}
 	if dsn == "" || hash == "" {
 		//error handler here
 	}
 
-	response := backend.CreateEntry(dsn, hash)
+	response := backend.CreateEntry(dsn, hash, fi)
 	fmt.Println(response)
 	// x := fmt.Sprintf("Connected to %s, added file %s", db, sampleHash)
 

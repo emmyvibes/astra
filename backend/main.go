@@ -16,7 +16,7 @@ type Message struct {
 func main() {
 	fmt.Println("SUBPROCESS DESU")
 
-	client := pubs.DBConnect("http://192.168.10.40:5984")
+	client := pubs.DBConnect("http://192.168.137.129:5984")
 	fmt.Println(client)
 	r := mux.NewRouter()
 
