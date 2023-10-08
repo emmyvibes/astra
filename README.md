@@ -2,6 +2,8 @@
 
 Devpost writeup: https://devpost.com/software/astra-pfmt0n
 
+Design notes: [DESIGN-NOTES.md](/DESIGN-NOTES.md)
+
 ## Components
 
 - `backend/`: CouchDB database interaction layer
