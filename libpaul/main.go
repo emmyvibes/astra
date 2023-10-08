@@ -12,7 +12,7 @@ func main() {
 	go startPouchdb()
 
 	time.Sleep(5 * time.Second)
-	fmt.Printf("my address: %v", getYggdrasilAddress())
+	fmt.Printf("my address: %v\n", getYggdrasilAddress())
 
 	// block forever, since we're not listening rn
 	// select {}
