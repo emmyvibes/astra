@@ -9,9 +9,10 @@ func main() {
 	fmt.Println("Starting subprocesses")
 
 	go startYggdrasil()
+	go startPouchdb()
 
 	time.Sleep(5 * time.Second)
-	fmt.Println(getYggdrasilAddress())
+	fmt.Printf("my address: %v", getYggdrasilAddress())
 
 	// block forever, since we're not listening rn
 	// select {}

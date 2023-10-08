@@ -1,7 +1,2 @@
-**/node_modules
-
-libpaul/nouchdb/_replicator
-libpaul/nouchdb/_users
-libpaul/nouchdb/pouch__all_dbs__
-libpaul/nouchdb/config.json
-libpaul/nouchdb/log.txt
+libpaul/pouchdb-data
+libpaul/log.txt

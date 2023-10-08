@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"io"
 	"net"
 	"os"
@@ -44,7 +43,7 @@ func startYggdrasil() {
 
 	// pass config
 	configData, _ := json.Marshal(initialConfig)
-	fmt.Println(string(configData))
+	// fmt.Println(string(configData))
 	io.Copy(stdin, bytes.NewReader(configData))
 	// we need to close stdin when done using
 	defer stdin.Close()
