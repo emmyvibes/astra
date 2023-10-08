@@ -1,6 +1,6 @@
 go 1.20
 
 use (
-	./client_api
-	./client_subprocess
+	./libpaul
+	./wanda
 )
