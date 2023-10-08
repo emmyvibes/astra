@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	backend "github.com/emmyvibes/paul/backend/pubs"
+	backend "github.com/emmyvibes/astra/backend/pubs"
 	"github.com/gorilla/mux"
 )
 

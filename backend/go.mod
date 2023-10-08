@@ -1,4 +1,4 @@
-module github.com/emmyvibes/paul/backend
+module github.com/emmyvibes/astra/backend
 
 go 1.20
 

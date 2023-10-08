@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/emmyvibes/paul/backend/pubs"
+	"github.com/emmyvibes/astra/backend/pubs"
 	"github.com/gorilla/mux"
 )
 
