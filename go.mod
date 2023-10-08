@@ -1,3 +1,3 @@
-module github.com/emmyvibes/paul
+module github.com/emmyvibes/astra
 
 go 1.20
