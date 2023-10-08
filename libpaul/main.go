@@ -1,35 +1,19 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	"os/exec"
 	"time"
-
-	_ "github.com/go-kivik/couchdb/v3"
-
-	"github.com/go-kivik/kivik"
-	"github.com/go-kivik/kivik/v3"
 )
 
-// The CouchDB driver
-
-
-
 func main() {
-	fmt.Println("SUBPROCESS です")
+	fmt.Println("Starting subprocesses")
 
-	//run couch
-	exec.Command("node", "couch.js")
+	go startYggdrasil()
 
-	//Don't @ me, there's probably some way to wait properly
-	time.Sleep(2 * time.Second)
+	time.Sleep(5 * time.Second)
+	fmt.Println(getYggdrasilAddress())
 
-	dsn := "http://localhost:5984"
-	client, err := kivik.New(context.TODO(), "couch", dsn)
-
-	if err != nil {
-		panic(err)
-	}
-	err.
+	// block forever, since we're not listening rn
+	// select {}
+	time.Sleep(1000000000 * time.Second)
 }

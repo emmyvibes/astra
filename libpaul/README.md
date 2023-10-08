@@ -4,7 +4,7 @@
 
 - starts pouchdb subprocess
 - starts yggdrasil subprocess
-- connects to pouchdb
+- connects pouchdb to other pouchdb
 
 ## api functions
 
