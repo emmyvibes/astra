@@ -9,6 +9,7 @@ import (
 	"os/exec"
 
 	yggadmin "github.com/yggdrasil-network/yggdrasil-go/src/admin"
+	yggconfig "github.com/yggdrasil-network/yggdrasil-go/src/config"
 	yggdefaults "github.com/yggdrasil-network/yggdrasil-go/src/defaults"
 )
 
@@ -21,13 +22,15 @@ func startYggdrasil() {
 	initialConfig.Peers = []string{"tls://supergay.network:9001", "tls://102.223.180.74:993", "tls://ygg.mnpnk.com:443"}
 	// yggdrasil management port
 	initialConfig.AdminListen = adminListen
+	// FOR DEVELOPMENT: don't automatically connect to LAN ygg peers
+	initialConfig.MulticastInterfaces = []yggconfig.MulticastInterfaceConfig{}
 
 	// TODO: persist your pub/privkeys somehow
 	initialConfig.NewKeys()
 
 	// fmt.Println(initialConfig)
 
-	cmd := exec.Command("yggdrasil", "-useconf")
+	cmd := exec.Command("sudo", "yggdrasil", "-useconf")
 	// pipe output
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr

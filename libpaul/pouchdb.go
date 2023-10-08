@@ -13,7 +13,7 @@ func startPouchdb() {
 	}
 	storageDir := fmt.Sprintf("%v/pouchdb-data", wd)
 
-	cmd := exec.Command("sudo", "-u", "nik", "pouchdb-server", "--dir", storageDir, "-o", "0.0.0.0")
+	cmd := exec.Command("pouchdb-server", "--dir", storageDir, "-o", "0.0.0.0")
 	// pipe output
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
