@@ -13,22 +13,25 @@ import (
 	yggdefaults "github.com/yggdrasil-network/yggdrasil-go/src/defaults"
 )
 
-const adminListen = "127.0.0.1:9090"
+const yggAdminListen = "[::]:9090"
 
-func startYggdrasil() {
+func startYggdrasil(privateKey string, publicKey string) {
 	initialConfig := yggdefaults.GenerateConfig()
 
 	// default static peers
 	initialConfig.Peers = []string{"tls://supergay.network:9001", "tls://102.223.180.74:993", "tls://ygg.mnpnk.com:443"}
 	// yggdrasil management port
-	initialConfig.AdminListen = adminListen
+	initialConfig.AdminListen = yggAdminListen
 	// FOR DEVELOPMENT: don't automatically connect to LAN ygg peers
 	initialConfig.MulticastInterfaces = []yggconfig.MulticastInterfaceConfig{}
 
 	// TODO: persist your pub/privkeys somehow
-	initialConfig.NewKeys()
+	// initialConfig.NewKeys()
 
-	// fmt.Println(initialConfig)
+	initialConfig.PrivateKey = privateKey
+	initialConfig.PublicKey = publicKey
+
+	// fmt.Println(initialConfig.PrivateKey, initialConfig.PublicKey)
 
 	cmd := exec.Command("sudo", "yggdrasil", "-useconf")
 	// pipe output
@@ -53,7 +56,7 @@ func startYggdrasil() {
 }
 
 func getYggdrasilAddress() string {
-	conn, err := net.Dial("tcp", adminListen)
+	conn, err := net.Dial("tcp", yggAdminListen)
 	if err != nil {
 		panic(err)
 	}
